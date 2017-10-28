@@ -24,12 +24,11 @@ namespace My_graphics_editor
         {
             InitializeComponent();
         }
+        New_Figure new_figure = new New_Figure();
 
         private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
         {
-            New_Figure new_figure = new New_Figure();
             new_figure.Set_Canvas(Canvas1);
-
             if (Cb1.SelectedIndex == 0)
             {
                 Canvas1.Children.Add(new_figure.Drawing(New_Figure.TypeoShapes.Ellipse));

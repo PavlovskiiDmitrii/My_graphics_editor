@@ -14,13 +14,17 @@ namespace My_graphics_editor
     {
         Canvas canvas;
         Random random = new Random();
+        int CountEllipse = 0;
 
         public void Set_Canvas(Canvas canvas)
         {
-            this.canvas = canvas;
+            this.canvas =canvas;
         }
+
         public void Modif_Shape_Group1(Shape shape)
         {
+             CountEllipse++;
+            shape.Name = "Ellipse"+Convert.ToString(CountEllipse);
             shape.Width = 50;
             shape.Height = 50;
             shape.Stroke = Brushes.Red;
