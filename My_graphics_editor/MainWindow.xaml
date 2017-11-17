@@ -12,19 +12,30 @@
         </CommandBinding>
     </Window.CommandBindings>
     <Grid Margin="10">
-        <Button Content="Нарисовать фигуру" HorizontalAlignment="Left" Margin="50,100,0,0" VerticalAlignment="Top" Width="120"
+        <Button Content="Нарисовать фигуру" HorizontalAlignment="Left" Margin="31,69,0,0" VerticalAlignment="Top" Width="120"
                 Command="New" />
-        <Canvas Name="Canvas1" HorizontalAlignment="Left" Height="539" Margin="248,10,0,0" VerticalAlignment="Top" Width="639"/>
-        <ComboBox Name="Cb1" HorizontalAlignment="Left" Margin="50,73,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" >
+        <ComboBox Name="Cb1" HorizontalAlignment="Left" Margin="31,42,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" >
             <TextBlock>Ellipse</TextBlock>
-            <TextBlock>square</TextBlock>
+            <TextBlock>Square</TextBlock>
             <TextBlock>Rectaangle</TextBlock>
-            <TextBlock> polygon</TextBlock>
-
-
+            <TextBlock> Line</TextBlock>
         </ComboBox>
-        <Button Content="-----" HorizontalAlignment="Left" Margin="50,125,0,0" VerticalAlignment="Top" Width="120"/>
-        <Label Name="Lb1" Content="_" HorizontalAlignment="Left" Margin="50,224,0,0" VerticalAlignment="Top"/>
-        <Label Name="Lb2" Content="_" HorizontalAlignment="Left" Margin="50,255,0,0" VerticalAlignment="Top"/>
+        <GroupBox Header="Создать фигуру" HorizontalAlignment="Left" Height="101" Margin="10,10,0,0" VerticalAlignment="Top" Width="165">
+
+        </GroupBox>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="233,10,0,0">
+            <Canvas x:Name="Canvas1" Margin="5"/>
+        </Border>
+        <GroupBox Header="Выбранная фигура" HorizontalAlignment="Left" Height="127" Margin="10,111,0,0" VerticalAlignment="Top" Width="218">
+            <Grid>
+                <Label Content="Имя фигуры -" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.5,-0.115"/>
+                <Label Content="Размер -" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
+                <Label Content="Цвет -" HorizontalAlignment="Left" Margin="10,62,0,0" VerticalAlignment="Top"/>
+                <Label Name="LbName"  Content="Label" HorizontalAlignment="Left" Margin="106,11,0,0" VerticalAlignment="Top"/>
+                <Label Name="LbSize" Content="Label" HorizontalAlignment="Left" Margin="106,37,0,0" VerticalAlignment="Top"/>
+                <Label Name="LbColor" Content="Label" HorizontalAlignment="Left" Margin="106,63,0,0" VerticalAlignment="Top"/>
+
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

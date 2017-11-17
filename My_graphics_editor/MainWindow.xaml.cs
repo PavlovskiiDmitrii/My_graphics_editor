@@ -42,6 +42,5 @@ namespace My_graphics_editor
                 Canvas1.Children.Add(new_figure.Drawing(New_Figure.TypeoShapes.Treangle));
             }
         }
-        
     }
 }

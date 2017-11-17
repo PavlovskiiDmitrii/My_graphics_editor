@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace My_graphics_editor
 {
-    class List_Shapes
+    public  class List_Shapes
     {
-        private List<Shape> shepes_list = new List<Shape>();
+        public List<Shape> shepes_list = new List<Shape>();
 
         public void AddShape(Shape shape)
         {
