@@ -10,55 +10,24 @@ using System.Windows.Media;
 
 namespace My_graphics_editor
 {
-    class New_Figure
+    public class New_Figure
     {
         Appearance appearance = new Appearance();
-        List_Shapes list_Shapes = new List_Shapes();
-        Canvas canvas;
-        
-        public New_Figure()
-        {}
+        GetTypeShape getShapeType = new GetTypeShape();
+        Get_Items_Form get_items_form;
 
-        public void Set_Canvas (Canvas canvas)
+        public New_Figure(Get_Items_Form get_items_form)
         {
-            this.canvas = canvas;
-            appearance.Set_Canvas(canvas);
+            this.get_items_form = get_items_form;
         }
 
-        public enum TypeoShapes
+        public Shape Drawing(string type)
         {
-            Treangle,Ellipse,Rectaangle
-        }
-
-        public Shape Drawing(TypeoShapes Id)
-        {
-            
-            
-            if(Id == TypeoShapes.Ellipse)
-            {
-                Shape shape = new Ellipse();
-                appearance.Modif_Shape_Group1(shape);
-                Click_Shape click_shape = new Click_Shape(shape,canvas);
-                list_Shapes.AddShape(shape);
-                return shape;
-            }
-            if(Id == TypeoShapes.Rectaangle)
-            {
-                Shape shape = new Rectangle();
-                appearance.Modif_Shape_Group1(shape);
-                Click_Shape click_shape = new Click_Shape(shape, canvas);
-                list_Shapes.AddShape(shape);
-                return shape;
-            }
-            if(Id == TypeoShapes.Treangle)
-            {
-                Polygon shape = new Polygon();
-                appearance.Modif_Shape_Group2(shape);
-               // Click_Shape click_shape = new Click_Shape(shape, canvas);
-                list_Shapes.AddShape(shape);
-                return shape;
-            }
-            return null;
+           Shape shape = getShapeType.Type(type);
+           appearance.Set_Canvas (get_items_form.canvas);
+           appearance.Modif_Shape_Group1(shape);
+          // Click_Shape click_shape = new Click_Shape(shape,get_items_form);
+           return shape;
         }
     }
 }

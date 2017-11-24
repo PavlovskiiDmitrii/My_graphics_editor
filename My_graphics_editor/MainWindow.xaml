@@ -16,9 +16,8 @@
                 Command="New" />
         <ComboBox Name="Cb1" HorizontalAlignment="Left" Margin="31,42,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" >
             <TextBlock>Ellipse</TextBlock>
-            <TextBlock>Square</TextBlock>
             <TextBlock>Rectaangle</TextBlock>
-            <TextBlock> Line</TextBlock>
+            <TextBlock>Treangle</TextBlock>
         </ComboBox>
         <GroupBox Header="Создать фигуру" HorizontalAlignment="Left" Height="101" Margin="10,10,0,0" VerticalAlignment="Top" Width="165">
 
@@ -37,5 +36,6 @@
 
             </Grid>
         </GroupBox>
+        <Button  Name="ButtonSaveInFile" Content="Сохранить" HorizontalAlignment="Left" Margin="19,243,0,0" VerticalAlignment="Top" Width="75" Click="ButtonSaveInFile_Click" />
     </Grid>
 </Window>

@@ -20,38 +20,54 @@ namespace My_graphics_editor
         private bool _isAttached = false;
         Shape shape;
         Canvas canvas;
-        AdditionalShapes additionalShapes;
+        Label labelName;
+        Label labelSize;
+        Label labelColor;
 
-        public Click_Shape(Shape shape,Canvas canvas)
+        AdditionalShapes additionalShapes;
+        List<AdditionalShapes> addList = new List<AdditionalShapes>();
+
+        public Click_Shape(Get_Items_Form get_items_form)
         {
-            this.canvas = canvas;
+            this.canvas = get_items_form.canvas;
+            this.labelName = get_items_form.labelName;
+            this.labelSize = get_items_form.labelSize;
+            this.labelColor = get_items_form.labelColor;
+        }
+        public void click_in_shape(Shape shape)
+        {
+            this.shape = shape;
             shape.MouseLeftButtonDown += EllipseOnMouseLeftButtonDown;
             shape.MouseLeftButtonUp += EllipseOnMouseLeftButtonUp;
         }
 
         public void EllipseOnMouseLeftButtonUp(object sender, MouseButtonEventArgs mouseButtonEventArgs)
         {
-            shape = sender as Shape;
-            MessageBox.Show(Convert.ToString(shape.GetType()));
+            // MessageBox.Show(Convert.ToString(shape.GetType()));
+            //labelName.Content = null;
+            //labelSize.Content = null;
+           //labelColor.Content = null;
         }
 
         public void EllipseOnMouseLeftButtonDown(object sender, MouseButtonEventArgs mouseButtonEventArgs)
         {
-           
-            shape = sender as Shape;
-            if(_isAttached == false)
+            additionalShapes = new AdditionalShapes(shape, canvas);
+            if (_isAttached == false)
             {
-                additionalShapes = new AdditionalShapes(shape, canvas);
+                addList.Add(additionalShapes);
                 _isAttached = true;
+                labelName.Content = shape.Name;
+                labelSize.Content = "He: " + shape.Height +" Wi: " + shape.Width;
+                labelColor.Content = shape.Fill;
             }
             else
             {
-                Application.Current.MainWindow.FindName("LbName");
                 _isAttached = false;
+                labelName.Content = null;
+                labelSize.Content = null;
+                labelColor.Content = null;
             }
-          
-           // m.LbName.Content = m.LbName.Content + shape.Name;
-           //MessageBox.Show(Convert.ToString(shape.GetType()));
+           
         }
     }
 }

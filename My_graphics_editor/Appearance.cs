@@ -14,6 +14,7 @@ namespace My_graphics_editor
     {
         Canvas canvas;
         Random random = new Random();
+        int i = 1;
 
         public void Set_Canvas(Canvas canvas)
         {
@@ -22,6 +23,8 @@ namespace My_graphics_editor
 
         public void SetAppearance(Shape shape)
         {
+            shape.Name = "Name_"+Convert.ToString(i);
+            i++;
             shape.Stroke = Brushes.Black;
             shape.StrokeThickness = 3;
             shape.Fill = Brushes.Moccasin;
@@ -30,9 +33,7 @@ namespace My_graphics_editor
             {
                 shape.Width = 50;
                 shape.Height = 50;
-               
             }
-            
         }
         public void SetCanvasPosition(Shape shape)
         {
@@ -53,14 +54,11 @@ namespace My_graphics_editor
             SetAppearance(shape);
             SetCanvasPosition(shape);
         }
-
-
         public void Modif_Shape_Group2(Polygon polygon)
         {
             Random randomTreangleЗlace = new Random();
             int scale = 2;
             polygon.Points = new PointCollection() { new Point(40 * scale, 10 * scale), new Point(10 * scale, 40 * scale), new Point(70 * scale, 40 * scale) };
-
             SetAppearance(polygon);
             SetCanvasPosition(polygon);
         }
