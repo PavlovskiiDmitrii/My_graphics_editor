@@ -13,7 +13,7 @@ namespace My_graphics_editor
     public class New_Figure
     {
         Appearance appearance = new Appearance();
-        GetTypeShape getShapeType = new GetTypeShape();
+        Get_Shape getShapeType = new Get_Shape();
         Get_Items_Form get_items_form;
 
         public New_Figure(Get_Items_Form get_items_form)
@@ -26,7 +26,6 @@ namespace My_graphics_editor
            Shape shape = getShapeType.Type(type);
            appearance.Set_Canvas (get_items_form.canvas);
            appearance.Modif_Shape_Group1(shape);
-          // Click_Shape click_shape = new Click_Shape(shape,get_items_form);
            return shape;
         }
     }

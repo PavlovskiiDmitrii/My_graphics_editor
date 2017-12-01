@@ -10,7 +10,7 @@ using System.Windows.Media;
 
 namespace My_graphics_editor
 {
-    class Appearance
+    public class Appearance
     {
         Canvas canvas;
         Random random = new Random();
@@ -18,13 +18,21 @@ namespace My_graphics_editor
 
         public void Set_Canvas(Canvas canvas)
         {
-            this.canvas =canvas;
+            this.canvas = canvas;
         }
 
         public void SetAppearance(Shape shape)
         {
-            shape.Name = "Name_"+Convert.ToString(i);
-            i++;
+            if (shape.GetType() == typeof(Ellipse))
+            {
+                shape.Name = "Name_Ell_" + Convert.ToString(i);
+                i++;
+            }
+            if (shape.GetType() == typeof(Rectangle))
+            {
+                shape.Name = "Name_Rec_" + Convert.ToString(i);
+                i++;
+            }
             shape.Stroke = Brushes.Black;
             shape.StrokeThickness = 3;
             shape.Fill = Brushes.Moccasin;

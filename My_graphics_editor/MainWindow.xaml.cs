@@ -31,6 +31,7 @@ namespace My_graphics_editor
             new_figure = new New_Figure(get_items_form);
             click_shape = new Click_Shape(get_items_form);
         }
+
         List_Shapes list_shapes = new List_Shapes();
         Save_In_File save_in_file = new Save_In_File();
         Shape shape;
@@ -47,5 +48,6 @@ namespace My_graphics_editor
         {
             save_in_file.save(list_shapes);
         }
+        
     }
 }

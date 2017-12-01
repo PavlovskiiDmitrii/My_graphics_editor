@@ -12,18 +12,18 @@ namespace My_graphics_editor
     public  class List_Shapes
     {
         public List<Shape> shapes_list = new List<Shape>();
-
         public void AddShape(Shape shape)
         {
             shapes_list.Add(shape);
+          
         }
-        public void DeleteVisual(Shape shape)
+        public void DeleteShape(Shape shape)
         {
             shapes_list.Remove(shape);
         }
         public Shape Get_shape(int i)
         {
-            return shapes_list[i];
+            return shapes_list[i-1];
         }
         public int Get_count_list()
         {

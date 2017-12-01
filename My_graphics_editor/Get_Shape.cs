@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace My_graphics_editor
 {
-    public class GetTypeShape
+    public class Get_Shape
     {
         public Shape Type(string type)
         {
@@ -19,7 +19,7 @@ namespace My_graphics_editor
             }
             else
             {
-                if (type == "Rectaangle")
+                if (type == "Rectangle")
                 {
                     Shape shape = new Rectangle();
                     return shape;

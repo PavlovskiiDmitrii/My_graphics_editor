@@ -18,56 +18,54 @@ namespace My_graphics_editor
     class Click_Shape
     {
         private bool _isAttached = false;
-        Shape shape;
-        Canvas canvas;
-        Label labelName;
-        Label labelSize;
-        Label labelColor;
-
-        AdditionalShapes additionalShapes;
-        List<AdditionalShapes> addList = new List<AdditionalShapes>();
+        Additional_Shapes additionalShapes;
+        Set_Item_Content set_item_content;
+        public Shape last_local_shape;
 
         public Click_Shape(Get_Items_Form get_items_form)
         {
-            this.canvas = get_items_form.canvas;
-            this.labelName = get_items_form.labelName;
-            this.labelSize = get_items_form.labelSize;
-            this.labelColor = get_items_form.labelColor;
+            set_item_content = new Set_Item_Content(get_items_form);
+            additionalShapes = new Additional_Shapes(get_items_form.canvas);
         }
         public void click_in_shape(Shape shape)
         {
-            this.shape = shape;
             shape.MouseLeftButtonDown += EllipseOnMouseLeftButtonDown;
             shape.MouseLeftButtonUp += EllipseOnMouseLeftButtonUp;
         }
 
         public void EllipseOnMouseLeftButtonUp(object sender, MouseButtonEventArgs mouseButtonEventArgs)
-        {
-            // MessageBox.Show(Convert.ToString(shape.GetType()));
-            //labelName.Content = null;
-            //labelSize.Content = null;
-           //labelColor.Content = null;
+        { 
         }
-
         public void EllipseOnMouseLeftButtonDown(object sender, MouseButtonEventArgs mouseButtonEventArgs)
         {
-            additionalShapes = new AdditionalShapes(shape, canvas);
+            Shape local_shape = (Shape)sender;
             if (_isAttached == false)
             {
-                addList.Add(additionalShapes);
+                last_local_shape = local_shape;
                 _isAttached = true;
-                labelName.Content = shape.Name;
-                labelSize.Content = "He: " + shape.Height +" Wi: " + shape.Width;
-                labelColor.Content = shape.Fill;
+
+                additionalShapes.In_Canvas_Add(local_shape);
+                set_item_content.Set_Content(local_shape);
             }
             else
             {
-                _isAttached = false;
-                labelName.Content = null;
-                labelSize.Content = null;
-                labelColor.Content = null;
+                if (_isAttached == true && last_local_shape == local_shape)
+                {
+                    _isAttached = false;
+
+                    additionalShapes.In_Canvas_Remove(local_shape);
+                    set_item_content.Null_Content();
+                }
+                if (_isAttached == true && last_local_shape != local_shape)
+                {
+                    last_local_shape = local_shape;
+                    _isAttached = true;
+
+                    additionalShapes.In_Canvas_Remove(last_local_shape);
+                    additionalShapes.In_Canvas_Add(local_shape);
+                    set_item_content.Set_Content(local_shape);
+                }
             }
-           
         }
     }
 }

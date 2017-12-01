@@ -14,13 +14,12 @@ namespace My_graphics_editor
     {
         public void save(List_Shapes list_shapes)
         {
-            string finishString = null;
+            StringBuilder finishString = null;
             for (int i = 0; i < list_shapes.Get_count_list(); i++)
             {
-                finishString = finishString + Convert.ToString("Type: " + list_shapes.Get_shape(i).GetType() + " name: " + list_shapes.Get_shape(i).Name + " Width: " + list_shapes.Get_shape(i).Width) + "\n";
+                finishString = new StringBuilder( finishString + Convert.ToString("Type: " + list_shapes.Get_shape(i).GetType() + " name: " + list_shapes.Get_shape(i).Name + " Width: " + list_shapes.Get_shape(i).Width) + "\n");
             }
-            MessageBox.Show(finishString);
-            finishString = null;
+            MessageBox.Show(Convert.ToString(finishString));
         }
     }
 }
