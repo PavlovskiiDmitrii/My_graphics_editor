@@ -3,15 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:My_graphics_editor"
         mc:Ignorable="d"
-        Title="Graf_Redaktor" Height="610" Width="925">
+        Title="Graf_Redaktor" Height="764.5" Width="925">
     <Window.CommandBindings>
         <CommandBinding Command="New"
                         Executed="CommandBinding_Executed">
         </CommandBinding>
     </Window.CommandBindings>
     <Grid Margin="10">
+        <wpfx:ColorPicker Margin="0,268,664,415" ShowAvailableColors="True" Name="Color_Diolog"  DisplayColorAndName="True" />
         <Button Content="Нарисовать фигуру" HorizontalAlignment="Left" Margin="31,69,0,0" VerticalAlignment="Top" Width="120"
                 Command="New" />
         <ComboBox Name="Cb1" HorizontalAlignment="Left" Margin="31,42,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" >
@@ -19,13 +21,13 @@
             <TextBlock>Rectangle</TextBlock>
             <TextBlock>Treangle</TextBlock>
         </ComboBox>
-        <GroupBox Header="Создать фигуру" HorizontalAlignment="Left" Height="101" Margin="10,10,0,0" VerticalAlignment="Top" Width="165">
+        <GroupBox Header="Создать фигуру" HorizontalAlignment="Left" Height="101" Margin="0,10,0,0" VerticalAlignment="Top" Width="175">
 
         </GroupBox>
         <Border BorderBrush="Black" BorderThickness="1" Margin="233,10,0,0">
             <Canvas x:Name="Canvas1" Margin="5"/>
         </Border>
-        <GroupBox Header="Выбранная фигура" HorizontalAlignment="Left" Height="127" Margin="10,111,0,0" VerticalAlignment="Top" Width="218">
+        <GroupBox Header="Выбранная фигура" HorizontalAlignment="Left" Height="127" Margin="0,111,0,0" VerticalAlignment="Top" Width="228">
             <Grid>
                 <Label Content="Имя фигуры -" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.5,-0.115"/>
                 <Label Content="Размер -" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
@@ -36,7 +38,7 @@
 
             </Grid>
         </GroupBox>
-        <Button  Name="ButtonSaveInFile" Content="Сохранить" HorizontalAlignment="Left" Margin="19,243,0,0" VerticalAlignment="Top" Width="75" Click="ButtonSaveInFile_Click" />
-        <Button Content="Button" HorizontalAlignment="Left" Margin="113,300,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button  Name="ButtonSaveInFile" Content="Сохранить" HorizontalAlignment="Left" Margin="0,243,0,0" VerticalAlignment="Top" Width="224" Click="ButtonSaveInFile_Click" />
+
     </Grid>
 </Window>

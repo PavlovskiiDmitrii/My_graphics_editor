@@ -27,7 +27,7 @@ namespace My_graphics_editor
         public MainWindow()
         {
             InitializeComponent();
-            get_items_form = new Get_Items_Form(Canvas1, LbName, LbSize, LbColor);
+            get_items_form = new Get_Items_Form(Canvas1,Color_Diolog, LbName, LbSize, LbColor);
             new_figure = new New_Figure(get_items_form);
             click_shape = new Click_Shape(get_items_form);
         }

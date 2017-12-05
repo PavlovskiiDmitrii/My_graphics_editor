@@ -14,6 +14,7 @@ namespace My_graphics_editor
     public class Additional_Shapes
     {
         Canvas canvas;
+        Set_Item_Content set_item_content;
 
         Ellipse topell = new Ellipse();
         Ellipse downell = new Ellipse();
@@ -24,13 +25,23 @@ namespace My_graphics_editor
         Rectangle downleftrect = new Rectangle();
         Rectangle downrightrect = new Rectangle();
 
-        Resize_Shape resize_shape;
+        Xceed.Wpf.Toolkit.ColorPicker colorPicker;
 
-        public Additional_Shapes(Canvas canvas)
+        Resize_Shape resize_shape;
+        Resize_Rec resize_rec;
+
+        public Additional_Shapes(Canvas canvas, Xceed.Wpf.Toolkit.ColorPicker colorPicker, Set_Item_Content set_item_content)
         {
+            this.colorPicker = colorPicker;
             this.canvas = canvas;
-           
+            this.set_item_content = set_item_content;
         }
+
+        public void refresh(Shape shape)
+        {
+            resize_shape.Refresh_additionaal_Shapes(shape);
+        }
+       
         public void In_Canvas_Add(Shape shape)
         {
             if (shape.GetType() == typeof(Ellipse))
@@ -48,7 +59,7 @@ namespace My_graphics_editor
                 Canvas.SetTop(rightell, Canvas.GetTop(shape) + ((shape.Height) / 2) - (rightell.Height / 2));
                 Canvas.SetLeft(rightell, Canvas.GetLeft(shape) + (shape.Width) - (rightell.Width) / 2);
 
-               resize_shape = new Resize_Shape(shape, canvas,topell, downell,leftell,rightell);
+               resize_shape = new Resize_Shape(shape, canvas, colorPicker, topell, downell,leftell,rightell);
             }
             if (shape.GetType() == typeof(Rectangle))
             {
@@ -77,7 +88,7 @@ namespace My_graphics_editor
                 Canvas.SetTop(downrightrect, Canvas.GetTop(shape) + (shape.Height) - (downrightrect.Height) / 2);
                 Canvas.SetLeft(downrightrect, Canvas.GetLeft(shape) + (shape.Width) - (downrightrect.Width) / 2);
 
-               resize_shape = new Resize_Shape(shape, canvas, topell, downell, leftell, rightell, topleftrect,toprightrect,downleftrect,downrightrect);
+                resize_rec = new Resize_Rec(shape, canvas,colorPicker, topell, downell, leftell, rightell, topleftrect,toprightrect,downleftrect,downrightrect);
             }
         }
         public void In_Canvas_Remove(Shape shape)
@@ -100,14 +111,15 @@ namespace My_graphics_editor
                 canvas.Children.Remove(toprightrect);
                 canvas.Children.Remove(downleftrect);
                 canvas.Children.Remove(downrightrect);
-                resize_shape.Remove_Mouse_Event();
+                resize_rec.Remove_Mouse_Event();
             }
         }
 
         public void Appearance_Ellepse(Shape topell)
         {
-            topell.Width = 18;
-            topell.Height = 18;
+            Canvas.SetZIndex(topell, 1000);
+            topell.Width = 13.5;
+            topell.Height = 13.5;
             topell.Fill = Brushes.White;
             topell.Stroke = Brushes.Black;
             topell.StrokeThickness = 2;
@@ -115,6 +127,7 @@ namespace My_graphics_editor
         }
         public void Appearance_Rectangle(Shape topell)
         {
+            Canvas.SetZIndex(topell, 1000);
             topell.Width = 20;
             topell.Height = 20;
             topell.Fill = Brushes.White;

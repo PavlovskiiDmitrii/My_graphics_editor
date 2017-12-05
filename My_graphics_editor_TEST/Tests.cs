@@ -45,7 +45,8 @@ namespace My_graphics_editor_TEST
             Label l2 = new Label();
             Label l3 = new Label();
             Canvas canvas = new Canvas();
-            Get_Items_Form get_items_form = new Get_Items_Form(canvas,l1,l2,l3);
+            Xceed.Wpf.Toolkit.ColorPicker colorPicker = new Xceed.Wpf.Toolkit.ColorPicker();
+            Get_Items_Form get_items_form = new Get_Items_Form(canvas,colorPicker,l1,l2,l3);
             Assert.AreEqual(get_items_form.canvas, canvas);
         }
 
@@ -57,7 +58,8 @@ namespace My_graphics_editor_TEST
             Label lSize = new Label();
             Label lColor = new Label();
             Canvas canvas = new Canvas();
-            Get_Items_Form get_items_form = new Get_Items_Form(canvas, lName, lSize, lColor);
+            Xceed.Wpf.Toolkit.ColorPicker colorPicker = new Xceed.Wpf.Toolkit.ColorPicker();
+            Get_Items_Form get_items_form = new Get_Items_Form(canvas, colorPicker, lName, lSize, lColor);
             Assert.AreEqual(get_items_form.labelName, lName);
         }
 
@@ -69,7 +71,8 @@ namespace My_graphics_editor_TEST
             Label lSize = new Label();
             Label lColor = new Label();
             Canvas canvas = new Canvas();
-            Get_Items_Form get_items_form = new Get_Items_Form(canvas, lName, lSize, lColor);
+            Xceed.Wpf.Toolkit.ColorPicker colorPicker = new Xceed.Wpf.Toolkit.ColorPicker();
+            Get_Items_Form get_items_form = new Get_Items_Form(canvas, colorPicker, lName, lSize, lColor);
             Assert.AreEqual(get_items_form.labelColor, lColor);
         }
 
@@ -80,8 +83,9 @@ namespace My_graphics_editor_TEST
             Label lName = new Label();
             Label lSize = new Label();
             Label lColor = new Label();
+            Xceed.Wpf.Toolkit.ColorPicker colorPicker = new Xceed.Wpf.Toolkit.ColorPicker();
             Canvas canvas = new Canvas();
-            Get_Items_Form get_items_form = new Get_Items_Form(canvas, lName, lSize, lColor);
+            Get_Items_Form get_items_form = new Get_Items_Form(canvas, colorPicker, lName, lSize, lColor);
             Assert.AreEqual(get_items_form.labelSize, lSize);
         }
 
