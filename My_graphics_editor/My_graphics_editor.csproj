@@ -89,7 +89,7 @@
     <Compile Include="Get_Shape.cs" />
     <Compile Include="Get_Items_Form.cs" />
     <Compile Include="Resize_Rec.cs" />
-    <Compile Include="Resize_Shape.cs" />
+    <Compile Include="Resize_Ell.cs" />
     <Compile Include="Save_In_File.cs" />
     <Compile Include="Set_Item_Content.cs" />
     <Page Include="MainWindow.xaml">

@@ -26,13 +26,12 @@ namespace My_graphics_editor
 
         Point pointMove;
 
-
         double deltaX = 0;
         double deltaY = 0;
 
         int Zindex = 0;
         public Shape last_local_shape;
-        Color_Dialog color_diolog ;
+        Color_Dialog color_diolog;
         Get_Items_Form get_items_form = new Get_Items_Form();
 
         public Click_Shape(Get_Items_Form get_items_form)
@@ -64,7 +63,7 @@ namespace My_graphics_editor
             if (_in_shape && local_shape == last_local_shape)
             {
                 _in_shape_right = true;
-                  Mouse.Capture(local_shape);
+                Mouse.Capture(local_shape);
 
                 deltaX = e.GetPosition(get_items_form.canvas).X - Canvas.GetLeft(local_shape);
                 deltaY = e.GetPosition(get_items_form.canvas).Y - Canvas.GetTop(local_shape);
@@ -76,14 +75,14 @@ namespace My_graphics_editor
 
         public void EllipseOnMouseLeftButtonUp(object sender, MouseButtonEventArgs mouseButtonEventArgs)
         {
-            
+
         }
         public void EllipseOnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             local_shape = (Shape)sender;
 
-            Canvas.SetZIndex(local_shape, Zindex);
-            Zindex++;
+            Canvas.SetZIndex(local_shape,Zindex++);
+
             if (_isAttached == false)
             {
                 color_diolog.Color_Changed(local_shape);
@@ -112,7 +111,7 @@ namespace My_graphics_editor
                     additionalShapes.In_Canvas_Remove(last_local_shape);
                     additionalShapes.In_Canvas_Add(local_shape);
                     set_item_content.Set_Content(local_shape);
-                    
+
                     get_items_form.colorPicker.SelectedColor = ((System.Windows.Media.SolidColorBrush)(local_shape.Fill)).Color;
                 }
             }

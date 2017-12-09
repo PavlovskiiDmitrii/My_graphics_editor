@@ -23,7 +23,7 @@ namespace My_graphics_editor
         }
         public Shape Get_shape(int i)
         {
-            return shapes_list[i-1];
+            return shapes_list[i];
         }
         public int Get_count_list()
         {

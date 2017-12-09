@@ -15,8 +15,9 @@ using System.Windows.Shapes;
 
 namespace My_graphics_editor
 {
-    public class Resize_Shape
+    public class Resize_Ell
     {
+
         Shape shape;
         Canvas canvas;
 
@@ -37,25 +38,25 @@ namespace My_graphics_editor
         public void Refresh_additionaal_Shapes(Shape shape)
         {
 
-            Canvas.SetTop(topell, Canvas.GetTop(shape)-topell.Height / 2);
+            Canvas.SetTop(topell, Canvas.GetTop(shape) - topell.Height / 2);
             Canvas.SetLeft(topell, Canvas.GetLeft(shape) + shape.Width / 2 - topell.Width / 2);
-            
+
             Canvas.SetTop(downell, Canvas.GetTop(shape) + shape.Height - downell.Height / 2);
             Canvas.SetLeft(downell, Canvas.GetLeft(shape) + shape.Width / 2 - topell.Width / 2);
 
             Canvas.SetTop(rightell, Canvas.GetTop(shape) + shape.Height / 2 - rightell.Height / 2);
             Canvas.SetLeft(rightell, Canvas.GetLeft(shape) + shape.Width - rightell.Width / 2);
 
-            Canvas.SetTop(leftell, Canvas.GetTop(shape)+shape.Height/2 - topell.Height / 2);
+            Canvas.SetTop(leftell, Canvas.GetTop(shape) + shape.Height / 2 - topell.Height / 2);
             Canvas.SetLeft(leftell, Canvas.GetLeft(shape) - topell.Height / 2);
-            
+
 
         }
 
         double deltaX = 0;
         double deltaY = 0;
 
-        public Resize_Shape(Shape shape, Canvas canvas, Xceed.Wpf.Toolkit.ColorPicker colorPicker, Ellipse topell, Ellipse downell, Ellipse leftell, Ellipse rightell)
+        public Resize_Ell(Shape shape, Canvas canvas, Xceed.Wpf.Toolkit.ColorPicker colorPicker, Ellipse topell, Ellipse downell, Ellipse leftell, Ellipse rightell)
         {
             this.colorPicker = colorPicker;
             this.shape = shape;
@@ -68,12 +69,15 @@ namespace My_graphics_editor
             this.leftell = leftell;
             this.rightell = rightell;
         }
-      
+
         public void Remove_Mouse_Event()
         {
-            canvas.MouseLeftButtonDown -= Canvas_MouseLeftButtonDown;
-            canvas.MouseLeftButtonUp -= Canvas_MouseLeftButtonUp;
-            canvas.MouseMove -= Canvas_MouseMove;
+            if (shape != null)
+            {
+                canvas.MouseLeftButtonDown -= Canvas_MouseLeftButtonDown;
+                canvas.MouseLeftButtonUp -= Canvas_MouseLeftButtonUp;
+                canvas.MouseMove -= Canvas_MouseMove;
+            }
         }
         private void Canvas_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -122,23 +126,21 @@ namespace My_graphics_editor
         {
             if (IsCheked_top)
             {
-                Canvas.SetTop(topell, e.GetPosition(canvas).Y - deltaY);
+                    Canvas.SetTop(topell, e.GetPosition(canvas).Y - deltaY);
+                    shape.Height = shape.Height + pointMove.Y - Canvas.GetTop(topell);
+                    pointMove.Y = Canvas.GetTop(topell);
+                    
 
-                shape.Height = shape.Height + pointMove.Y - Canvas.GetTop(topell);
-                pointMove.Y = Canvas.GetTop(topell);
-                Canvas.SetTop(shape, e.GetPosition(canvas).Y - deltaY + (topell.Height / 2));
-
-                Canvas.SetTop(rightell, Canvas.GetTop(shape) + shape.Height / 2 - rightell.Height / 2);
-                Canvas.SetTop(leftell, Canvas.GetTop(shape) + shape.Height / 2 - leftell.Height / 2);
-
+                    Canvas.SetTop(shape, e.GetPosition(canvas).Y - deltaY + (topell.Height / 2));
+                    Canvas.SetTop(rightell, Canvas.GetTop(shape) + shape.Height / 2 - rightell.Height / 2);
+                    Canvas.SetTop(leftell, Canvas.GetTop(shape) + shape.Height / 2 - leftell.Height / 2);
             }
             if (IsCheked_down)
             {
                 Canvas.SetTop(downell, e.GetPosition(canvas).Y - deltaY);
-
                 shape.Height = shape.Height - (pointMove.Y - Canvas.GetTop(downell));
                 pointMove.Y = Canvas.GetTop(downell);
-                
+
                 Canvas.SetTop(rightell, Canvas.GetTop(shape) + shape.Height / 2 - rightell.Height / 2);
                 Canvas.SetTop(leftell, Canvas.GetTop(shape) + shape.Height / 2 - leftell.Height / 2);
             }
@@ -165,10 +167,8 @@ namespace My_graphics_editor
                 Canvas.SetLeft(topell, Canvas.GetLeft(shape) + shape.Width / 2 - topell.Width / 2);
                 Canvas.SetLeft(downell, Canvas.GetLeft(shape) + shape.Width / 2 - downell.Width / 2);
 
-
             }
         }
-
 
     }
 }
